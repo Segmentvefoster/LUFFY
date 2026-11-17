@@ -1,0 +1,13 @@
+name: todo-scan
+on:
+  push:
+    branches: [dev]
+  workflow_dispatch:
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Scan TODOs and dump README
+        run: python3 .github/scan_todos.py
